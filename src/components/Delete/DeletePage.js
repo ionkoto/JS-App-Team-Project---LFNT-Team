@@ -59,8 +59,8 @@ export default class DeletePage extends Component {
                 <p>
                     Are you sure you want to delete <strong>{this.state.title}</strong> from the movies list?
                 </p>
-                <button className="btn btn-default" onClick = {this.onDeleteSubmitHandler} >Delete</button>
-                <button className="btn btn-default" onClick = {this.onCancelSubmitHandler} >Cancel</button>
+                <button className="btn btn-default" onClick={this.onDeleteSubmitHandler} >Delete</button>
+                <button className="btn btn-default" onClick={this.onCancelSubmitHandler} >Cancel</button>
             </div>
         );
     }
