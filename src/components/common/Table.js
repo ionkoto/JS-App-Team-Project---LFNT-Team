@@ -22,6 +22,7 @@ export default class TableTemplate extends Component {
                 <Th column="genre">Genre</Th>
                 <Th column="rating">Rating</Th>
                 <Th column="date">Date</Th>
+                <Th column="actions">Actions</Th>
                 </Thead>
             </Table>
         )
