@@ -15,3 +15,5 @@ build
 npm-debug.log
 .idea/workspace.xml
 .idea/JS_TeamProject-LFNT.iml
+.idea/
+.idea/workspace.xml
