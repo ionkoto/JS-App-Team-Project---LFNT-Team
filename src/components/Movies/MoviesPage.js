@@ -4,7 +4,7 @@ import {loadMovies} from '../../models/movie';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
 
-export default class CatalogPage extends Component {
+export default class MoviesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,7 +35,7 @@ export default class CatalogPage extends Component {
 
         return (
             <div>
-                <h1>Catalog Page</h1>
+                <h1>Movie Page</h1>
                 {createLink}
                 <div>
                     {this.state.movies.map((e, i) => {
