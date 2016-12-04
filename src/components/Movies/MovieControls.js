@@ -5,12 +5,11 @@ export default class MovieControls extends Component {
     render() {
         let edit = null;
 
-        if (this.props.canEdit) edit = <Link to={"/edit/" + this.props.movieId} className="btn btn-default">Edit info</Link>;
+
+        if (this.props.canEdit) edit = <div><Link to={"/edit/" + this.props.movieId} className="btn btn-default">Edit info</Link> <Link to={"/delete/" + this.props.movieId} className="btn btn-default">Delete movie</Link></div>;
 
         return (
-            <div>
-                {edit}
-            </div>
+            edit
         )
     }
 }
