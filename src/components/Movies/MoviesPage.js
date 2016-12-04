@@ -28,18 +28,21 @@ export default class MoviesPage extends Component {
     }
 
     render() {
-        let createLink = null;
-        if (!sessionStorage.getItem('movieId')) {
-            createLink = <Link to="/create" className="btn btn-default">Create movie</Link>
-        }
 
         return (
             <div>
                 <h1>Movie Page</h1>
-                {createLink}
+                <Link to="/create" className="btn btn-default">Create movie</Link>
                 <div>
                     {this.state.movies.map((e, i) => {
-                        return <Movie key={i} name={e.name} id={e._id} description={e.comment}/>
+                        return <Movie key={i}
+                                      id={e._id}
+                                      title={e.title}
+                                      summary={e.summary}
+                                      director={e.director}
+                                      genre={e.genre}
+                                      rating ={e.rating}
+                                      date ={e.date}/>
                     })}
                 </div>
             </div>

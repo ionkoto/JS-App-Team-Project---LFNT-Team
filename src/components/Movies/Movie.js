@@ -16,7 +16,7 @@ export default class Movie extends Component {
                 <p>{this.props.genre || 'No genre'}</p>
                 <span className="spanner">Rating</span>
                 <p>{this.props.rating || 'No rating'}</p>
-                <span className="spanner">Date</span>
+                <span className="spanner">Release Date</span>
                 <p>{this.props.date || 'No date'}</p>
             </Link>
         )
