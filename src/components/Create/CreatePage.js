@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import CreateForm from '../Edit/EditForm';
-import {create} from '../../models/team';
+import {create} from '../../models/movie';
 
 export default class CreatePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {name: '', description: '', submitDisabled: false};
+        this.state = {
+            name: '',
+            description: '',
+            director: '',
+            genre: '',
+            rating: 0,
+            date: null,
+            submitDisabled: false};
         this.bindEventHandlers();
     }
 
@@ -26,7 +33,15 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        create(this.state.name, this.state.description, this.onSubmitResponse);
+        create(
+            this.state.name,
+            this.state.description,
+            this.state.director,
+            this.state.genre,
+            this.state.rating,
+            this.state.date,
+            this.onSubmitResponse
+        );
     }
 
     onSubmitResponse(response) {
