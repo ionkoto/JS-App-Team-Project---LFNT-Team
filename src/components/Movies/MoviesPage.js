@@ -41,8 +41,8 @@ export default class MoviesPage extends Component {
                                       summary={e.summary}
                                       director={e.director}
                                       genre={e.genre}
-                                      rating ={e.rating}
-                                      date ={e.date}/>
+                                      rating={e.rating}
+                                      date={e.date}/>
                     })}
                 </div>
             </div>

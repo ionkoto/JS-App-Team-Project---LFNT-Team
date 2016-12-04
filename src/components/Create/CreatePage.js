@@ -46,7 +46,7 @@ export default class CreatePage extends Component {
                 <CreateForm
                     title={this.state.title}
                     summary={this.state.summary}
-                    director  ={this.state.director}
+                    director={this.state.director}
                     genre={this.state.genre}
                     rating={this.state.rating}
                     date={this.state.date}
