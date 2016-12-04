@@ -8,7 +8,7 @@ export default class MoviesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: []
+            movies: [],
         };
         this.bindEventHandlers();
     }
@@ -60,6 +60,7 @@ export default class MoviesPage extends Component {
                         </tbody>
                     </table>
                 </div>
+
             </div>
         );
     }

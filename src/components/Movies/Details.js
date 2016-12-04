@@ -72,7 +72,7 @@ export default class Details extends Component {
                 <p>{this.state.rating || 'No rating'}</p>
                 <span className="spanner">Release date</span>
                 <p>{this.state.date || 'Unknown release date'}</p>
-                <span className="spanner">Movie management</span>
+
                 <MovieControls
                     movieId={this.props.params.movieId}
                     canEdit={this.state.canEdit}
