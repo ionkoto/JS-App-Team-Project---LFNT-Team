@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Team from './Team';
-import {loadTeams} from '../../models/movie';
+import Movie from './Movie';
+import {loadMovies} from '../../models/movie';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
 
@@ -8,7 +8,7 @@ export default class CatalogPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            teams: []
+            movies: []
         };
         this.bindEventHandlers();
     }
@@ -18,19 +18,19 @@ export default class CatalogPage extends Component {
     }
 
     onLoadSuccess(response) {
-        // Display teams
-        this.setState({teams: response})
+        // Display movies
+        this.setState({movies: response})
     }
 
     componentDidMount() {
-        // Request list of teams from the server
-        loadTeams(this.onLoadSuccess);
+        // Request list of movies from the server
+        loadMovies(this.onLoadSuccess);
     }
 
     render() {
         let createLink = null;
-        if (!sessionStorage.getItem('teamId')) {
-            createLink = <Link to="/create" className="btn btn-default">Create team</Link>
+        if (!sessionStorage.getItem('movieId')) {
+            createLink = <Link to="/create" className="btn btn-default">Create movie</Link>
         }
 
         return (
@@ -38,8 +38,8 @@ export default class CatalogPage extends Component {
                 <h1>Catalog Page</h1>
                 {createLink}
                 <div>
-                    {this.state.teams.map((e, i) => {
-                        return <Team key={i} name={e.name} id={e._id} description={e.comment}/>
+                    {this.state.movies.map((e, i) => {
+                        return <Movie key={i} name={e.name} id={e._id} description={e.comment}/>
                     })}
                 </div>
             </div>

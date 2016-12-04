@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {loadTeamDetails, loadUsersDetails} from '../../models/movie';
-import {joinTeam, leaveTeam} from '../../models/user';
-import TeamControls from './TeamControls';
+import {loadMovieDetails, loadUsersDetails} from '../../models/movie';
+import {joinMovie, leaveMovie} from '../../models/user';
+import MovieControls from './MovieControls';
 import './Details.css';
 
 export default class Details extends Component {
@@ -12,7 +12,7 @@ export default class Details extends Component {
             description: '',
             members: [],
             canEdit: false,
-            ownTeam: sessionStorage.getItem('movieId') === this.props.params.movieId
+            ownMovie: sessionStorage.getItem('movieId') === this.props.params.movieId
         };
 
         this.bindEventHandlers();
@@ -28,12 +28,12 @@ export default class Details extends Component {
 
     onJoin(event) {
         event.preventDefault();
-        joinTeam(this.props.params.movieId, this.statusChange);
+        joinMovie(this.props.params.movieId, this.statusChange);
     }
 
     onLeave(event) {
         event.preventDefault();
-        leaveTeam(this.statusChange);
+        leaveMovie(this.statusChange);
     }
 
     statusChange(response) {
@@ -41,7 +41,7 @@ export default class Details extends Component {
     }
 
     componentDidMount() {
-        loadTeamDetails(this.props.params.movieId, this.onLoadSuccess);
+        loadMovieDetails(this.props.params.movieId, this.onLoadSuccess);
         loadUsersDetails(this.props.params.movieId, this.onUsersSuccess);
     }
 
@@ -63,7 +63,7 @@ export default class Details extends Component {
     }
 
     render() {
-        let title = 'Team details';
+        let title = 'Movie details';
         if (this.state.name !== '') {
             title = this.state.name + ' details';
         }
@@ -80,17 +80,17 @@ export default class Details extends Component {
         return (
             <div className="details-box">
                 <span className="titlebar">{title}</span>
-                <span className="spanner">Team members</span>
+                <span className="spanner">Movie members</span>
                 {members}
                 <span className="spanner">Description</span>
                 <p>{this.state.description || 'No description'}</p>
-                <span className="spanner">Team management</span>
-                <TeamControls
+                <span className="spanner">Movie management</span>
+                <MovieControls
                     movieId={this.props.params.movieId}
                     onJoin={this.onJoin}
                     onLeave={this.onLeave}
                     canEdit={this.state.canEdit}
-                    ownTeam={this.state.ownTeam}
+                    ownMovie={this.state.ownMovie}
                 />
             </div>
         )
