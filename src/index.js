@@ -14,6 +14,7 @@ import Logout from './components/Logout/LogoutPage';
 import Details from './components/Movies/Details';
 import Edit from './components/Edit/EditPage';
 import Create from './components/Create/CreatePage';
+import Delete from './components/Delete/DeletePage';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -33,6 +34,7 @@ ReactDOM.render(
             <Route path="logout" component={Logout}/>
             <Route path="edit/:movieId" component={Edit}/>
             <Route path="create" component={Create}/>
+            <Route path="delete/:movieId" component={Delete}/>
         </Route>
     </Router>,
     document.getElementById('root')

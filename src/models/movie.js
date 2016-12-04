@@ -1,6 +1,6 @@
 // eslint-disable-next-line
-import {get, post, update} from './requester';
-import {joinMovie} from './user';
+import {get, post, update, del} from './requester';
+
 
 function loadMovies(callback) {
     // Request movies from db
@@ -44,4 +44,9 @@ function create(title, summary, director, genre, rating, date, callback) {
         .then(callback(true));
 }
 
-export {loadMovies, loadMovieDetails, loadUsersDetails, edit, create};
+function deleteMovie(movieId, callback){
+    del('appdata', 'movies/' + movieId, 'kinvey')
+        .then(callback(true))
+}
+
+export {loadMovies, loadMovieDetails, loadUsersDetails, edit, create, deleteMovie};

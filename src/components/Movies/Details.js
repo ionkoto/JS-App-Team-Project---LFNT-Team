@@ -76,7 +76,6 @@ export default class Details extends Component {
                 <MovieControls
                     movieId={this.props.params.movieId}
                     canEdit={this.state.canEdit}
-                    ownMovie={this.state.ownMovie}
                 />
             </div>
         )
