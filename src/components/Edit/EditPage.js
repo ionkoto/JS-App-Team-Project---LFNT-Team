@@ -51,6 +51,7 @@ export default class EditPage extends Component {
         if (response === true) {
             // Navigate away from login page
             this.context.router.push('/movies');
+
         } else {
             // Something went wrong, let the user try again
             this.setState({submitDisabled: true});
