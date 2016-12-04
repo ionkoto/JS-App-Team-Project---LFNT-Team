@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {loadMovieDetails, loadUsersDetails} from '../../models/movie';
-import {joinMovie, leaveMovie} from '../../models/user';
 import MovieControls from './MovieControls';
 import './Details.css';
 
@@ -8,9 +7,12 @@ export default class Details extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            name: '',
-            description: '',
-            members: [],
+            title: '',
+            summary: '',
+            director: '',
+            genre: '',
+            rating: 0,
+            date: '',
             canEdit: false,
             ownMovie: sessionStorage.getItem('movieId') === this.props.params.movieId
         };
@@ -21,20 +23,9 @@ export default class Details extends Component {
     bindEventHandlers() {
         this.onLoadSuccess = this.onLoadSuccess.bind(this);
         this.onUsersSuccess = this.onUsersSuccess.bind(this);
-        this.onJoin = this.onJoin.bind(this);
-        this.onLeave = this.onLeave.bind(this);
         this.statusChange = this.statusChange.bind(this);
     }
 
-    onJoin(event) {
-        event.preventDefault();
-        joinMovie(this.props.params.movieId, this.statusChange);
-    }
-
-    onLeave(event) {
-        event.preventDefault();
-        leaveMovie(this.statusChange);
-    }
 
     statusChange(response) {
         this.context.router.push('/');
@@ -47,8 +38,12 @@ export default class Details extends Component {
 
     onLoadSuccess(response) {
         let newState = {
-            name: response.name,
-            description: response.comment
+            title: response.title,
+            summary: response.summary,
+            director: response.director,
+            genre: response.genre,
+            rating: response.rating,
+            date: response.date,
         };
         if (response._acl.creator === sessionStorage.getItem('userId')) {
             newState.canEdit = true;
@@ -63,32 +58,23 @@ export default class Details extends Component {
     }
 
     render() {
-        let title = 'Movie details';
-        if (this.state.name !== '') {
-            title = this.state.name + ' details';
-        }
-
-        let members = <p>No member info</p>;
-        if (this.state.members.length > 0) {
-            members = (
-            <div>
-                {this.state.members.map((e, i) => <span key={i} className="member">{e.username}</span>)}
-            </div>
-            );
-        }
 
         return (
             <div className="details-box">
-                <span className="titlebar">{title}</span>
-                <span className="spanner">Movie members</span>
-                {members}
-                <span className="spanner">Description</span>
-                <p>{this.state.description || 'No description'}</p>
+                <span className="titlebar">{this.state.title}</span>
+                <span className="spanner">Summary</span>
+                <p>{this.state.summary || 'No description'}</p>
+                <span className="spanner">Director</span>
+                <p>{this.state.director || 'Unknown director'}</p>
+                <span className="spanner">Genre</span>
+                <p>{this.state.genre || 'Unknown genre'}</p>
+                <span className="spanner">Rating</span>
+                <p>{this.state.rating || 'No rating'}</p>
+                <span className="spanner">Release date</span>
+                <p>{this.state.date || 'Unknown release date'}</p>
                 <span className="spanner">Movie management</span>
                 <MovieControls
                     movieId={this.props.params.movieId}
-                    onJoin={this.onJoin}
-                    onLeave={this.onLeave}
                     canEdit={this.state.canEdit}
                     ownMovie={this.state.ownMovie}
                 />

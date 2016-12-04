@@ -60,30 +60,6 @@ function logout(callback) {
     }
 }
 
-function joinMovie(movieId, callback) {
-    let userData = {
-        username: sessionStorage.getItem('username'),
-        movieId: movieId
-    };
-    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
-        .then((response) => {
-            saveSession(response);
-            observer.onSessionUpdate();
-            callback(true);
-        });
-}
 
-function leaveMovie(callback) {
-    let userData = {
-        username: sessionStorage.getItem('username'),
-        movieId: ''
-    };
-    requester.update('user', sessionStorage.getItem('userId'), userData, 'kinvey')
-        .then((response) => {
-            saveSession(response);
-            observer.onSessionUpdate();
-            callback(true);
-        });
-}
 
-export {login, register, logout, joinMovie, leaveMovie};
+export {login, register, logout};
