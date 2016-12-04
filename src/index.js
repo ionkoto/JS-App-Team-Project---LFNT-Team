@@ -6,6 +6,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import {IndexRoute, Router, Route, browserHistory} from 'react-router';
 import HomePage from './components/Home/HomePage';
 import Movies from './components/Movies/MoviesPage';
+import MyMovies from './components/Movies/MyMoviesPage';
 import About from './components/About/AboutPage';
 import Login from './components/Login/LoginPage';
 import Register from './components/Register/RegisterPage';
@@ -20,6 +21,10 @@ ReactDOM.render(
             <IndexRoute component={HomePage}/>
             <Route path="movies">
                 <IndexRoute component={Movies}/>
+                <Route path=":movieId" component={Details}/>
+            </Route>
+            <Route path="mymovies">
+                <IndexRoute component={MyMovies}/>
                 <Route path=":movieId" component={Details}/>
             </Route>
             <Route path="about" component={About}/>

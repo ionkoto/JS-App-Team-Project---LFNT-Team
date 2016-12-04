@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "react-scripts": "0.7.0"
   },
   "dependencies": {
@@ -10,7 +12,8 @@
     "jquery": "^3.1.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-router": "^3.0.0"
+    "react-router": "^3.0.0",
+    "reactable": "^0.14.1"
   },
   "scripts": {
     "start": "react-scripts start",

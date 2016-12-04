@@ -4,11 +4,12 @@ import {loadMovies} from '../../models/movie';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
 
-export default class MoviesPage extends Component {
+export default class MyMoviesPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            movies: [],
+            mymovies: [],
+            hasMovies: false
         };
         this.bindEventHandlers();
     }
@@ -18,8 +19,14 @@ export default class MoviesPage extends Component {
     }
 
     onLoadSuccess(response) {
-        // Display movies
-        this.setState({movies: response})
+        // Display My movies
+        response.map((e, i) => {
+            if(sessionStorage.getItem('userId')== e._acl.creator){
+                this.state.mymovies.push(e);
+                this.state.hasMovies=true;
+            }});
+        //this.setState({mymovies: response});
+
     }
 
     componentDidMount() {
@@ -28,13 +35,17 @@ export default class MoviesPage extends Component {
     }
 
     render() {
+        let message = <p>You haven't created any movies yet. Click <Link to="/create">here</Link> to create your first movie.</p>;
 
-        return (
+        if(!this.state.hasMovies){
+            return <div>{message}</div>
+        } else
+            return (
             <div>
-                <h1>Movie Page</h1>
+                <h1>My Movies Page</h1>
                 <Link to="/create" className="btn btn-default">Create movie</Link>
                 <div>
-                    {this.state.movies.map((e, i) => {
+                    {this.state.mymovies.map((e, i) => {
                         return <Movie key={i}
                                       id={e._id}
                                       title={e.title}
@@ -43,7 +54,9 @@ export default class MoviesPage extends Component {
                                       genre={e.genre}
                                       rating ={e.rating}
                                       date ={e.date}/>
-                    })}
+                    })
+                    }
+
                 </div>
 
             </div>
