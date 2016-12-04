@@ -1,4 +1,4 @@
-.team-box {
+.movie-box {
     float:left;
     width: 20em;
     margin: 1em;
@@ -7,7 +7,7 @@
     color: black;
 }
 
-.team-box:hover {
+.movie-box:hover {
     border: 3px solid black;
     text-decoration: none;
     color: black;
@@ -27,6 +27,6 @@
     font-weight: 600;
 }
 
-.team-box p {
+.movie-box p {
     margin: 1.5em;
 }
