@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {loadTeamDetails, loadUsersDetails} from '../../models/team';
+import {loadTeamDetails, loadUsersDetails} from '../../models/movie';
 import {joinTeam, leaveTeam} from '../../models/user';
 import TeamControls from './TeamControls';
 import './Details.css';
@@ -12,7 +12,7 @@ export default class Details extends Component {
             description: '',
             members: [],
             canEdit: false,
-            ownTeam: sessionStorage.getItem('teamId') === this.props.params.teamId
+            ownTeam: sessionStorage.getItem('movieId') === this.props.params.movieId
         };
 
         this.bindEventHandlers();
@@ -28,7 +28,7 @@ export default class Details extends Component {
 
     onJoin(event) {
         event.preventDefault();
-        joinTeam(this.props.params.teamId, this.statusChange);
+        joinTeam(this.props.params.movieId, this.statusChange);
     }
 
     onLeave(event) {
@@ -41,8 +41,8 @@ export default class Details extends Component {
     }
 
     componentDidMount() {
-        loadTeamDetails(this.props.params.teamId, this.onLoadSuccess);
-        loadUsersDetails(this.props.params.teamId, this.onUsersSuccess);
+        loadTeamDetails(this.props.params.movieId, this.onLoadSuccess);
+        loadUsersDetails(this.props.params.movieId, this.onUsersSuccess);
     }
 
     onLoadSuccess(response) {
@@ -86,7 +86,7 @@ export default class Details extends Component {
                 <p>{this.state.description || 'No description'}</p>
                 <span className="spanner">Team management</span>
                 <TeamControls
-                    teamId={this.props.params.teamId}
+                    movieId={this.props.params.movieId}
                     onJoin={this.onJoin}
                     onLeave={this.onLeave}
                     canEdit={this.state.canEdit}

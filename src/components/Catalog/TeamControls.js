@@ -7,7 +7,7 @@ export default class TeamControls extends Component {
         let join = null;
         let leave = null;
 
-        if (this.props.canEdit) edit = <Link to={"/edit/" + this.props.teamId} className="btn btn-default">Edit info</Link>;
+        if (this.props.canEdit) edit = <Link to={"/edit/" + this.props.movieId} className="btn btn-default">Edit info</Link>;
         if (this.props.ownTeam)
             leave = <a href="" className="btn btn-default" onClick={this.props.onLeave}>Leave team</a>;
         else
