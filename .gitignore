@@ -13,7 +13,11 @@ build
 .DS_Store
 .env
 npm-debug.log
+<<<<<<< HEAD
 .idea/workspace.xml
 .idea/JS_TeamProject-LFNT.iml
 .idea/
 .idea/workspace.xml
+=======
+.idea
+>>>>>>> refs/remotes/origin/master
