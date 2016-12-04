@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import EditForm from './EditForm';
-import {loadTeamDetails, edit} from '../../models/team';
+import {loadMovieDetails, edit} from '../../models/movie';
 
 export default class EditPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {name: '', description: '', submitDisabled: true};
+        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', submitDisabled: true};
         this.bindEventHandlers();
     }
 
     componentDidMount() {
         // Populate form
-        loadTeamDetails(this.props.params.teamId, this.onLoadSuccess);
+        loadMovieDetails(this.props.params.movieId, this.onLoadSuccess);
     }
 
     bindEventHandlers() {
@@ -24,8 +24,12 @@ export default class EditPage extends Component {
 
     onLoadSuccess(response) {
         this.setState({
-            name: response.name,
-            description: response.comment,
+            title: response.title,
+            summary: response.summary,
+            director: response.director,
+            genre: response.genre,
+            rating: response.rating,
+            date: response.date,
             submitDisabled: false
         });
     }
@@ -40,7 +44,7 @@ export default class EditPage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        edit(this.props.params.teamId, this.state.name, this.state.description, this.onSubmitResponse);
+        edit(this.props.params.movieId, this.state.title, this.state.summary, this.state.director, this.state.genre, this.state.rating, this.state.date, this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
@@ -53,13 +57,18 @@ export default class EditPage extends Component {
         }
     }
 
+
     render() {
         return (
             <div>
                 <h1>Edit Page</h1>
                 <EditForm
-                    name={this.state.name}
-                    description={this.state.description}
+                    title={this.state.title}
+                    summary={this.state.summary}
+                    director  ={this.state.director}
+                    genre={this.state.genre}
+                    rating={this.state.rating}
+                    date={this.state.date}
                     submitDisabled={this.state.submitDisabled}
                     onChangeHandler={this.onChangeHandler}
                     onSubmitHandler={this.onSubmitHandler}

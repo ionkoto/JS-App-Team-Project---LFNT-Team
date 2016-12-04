@@ -20,13 +20,13 @@ ReactDOM.render(
             <IndexRoute component={HomePage}/>
             <Route path="catalog">
                 <IndexRoute component={Catalog}/>
-                <Route path=":teamId" component={Details}/>
+                <Route path=":movieId" component={Details}/>
             </Route>
             <Route path="about" component={About}/>
             <Route path="login" component={Login}/>
             <Route path="register" component={Register}/>
             <Route path="logout" component={Logout}/>
-            <Route path="edit/:teamId" component={Edit}/>
+            <Route path="edit/:movieId" component={Edit}/>
             <Route path="create" component={Create}/>
         </Route>
     </Router>,

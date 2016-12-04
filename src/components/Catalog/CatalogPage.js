@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Team from './Team';
-import {loadTeams} from '../../models/team';
+import {loadTeams} from '../../models/movie';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
 
