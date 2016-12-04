@@ -41,9 +41,7 @@ function create(title, summary, director, genre, rating, date, callback) {
         date:date
     };
     post('appdata', 'movies', movieData, 'kinvey')
-        .then((response) => {
-            joinMovie(response._id, callback);
-        });
+        .then(callback(true));
 }
 
 export {loadMovies, loadMovieDetails, loadUsersDetails, edit, create};
