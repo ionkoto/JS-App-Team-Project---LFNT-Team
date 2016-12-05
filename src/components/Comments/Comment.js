@@ -6,9 +6,12 @@ export default class Comment extends Component {
 
     render() {
         return(
-            <div>
-                <p>{this.props.commentText}</p>
-                <p>{this.props.commentAuthor}</p>
+            <div className="panel panel-default">
+                <p className="panel-body">{this.props.commentText}</p>
+                <p className="panel-footer">{this.props.commentAuthor}</p>
+                {
+                    (this.props.creator === sessionStorage.getItem('userId'))? <Link to={"/editComment/" + this.props.id} className="btn btn-default">Edit/Delete Comment</Link> : null
+                }
             </div>
         )
     }
