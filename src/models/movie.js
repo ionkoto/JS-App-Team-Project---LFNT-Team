@@ -42,7 +42,8 @@ function create(title, summary, director, genre, rating, date, image, video, cal
         rating: rating,
         date:date,
         image:image,
-        video:video
+        video:video,
+        timestamp: Date.now()
     };
     post('appdata', 'movies', movieData, 'kinvey')
         .then(callback(true));

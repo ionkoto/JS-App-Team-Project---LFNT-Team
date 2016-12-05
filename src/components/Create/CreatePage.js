@@ -5,7 +5,7 @@ import {create} from '../../models/movie';
 export default class CreatePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', image: '', video: '', submitDisabled: false};
+        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', image: '', video: '',submitDisabled: false};
         this.bindEventHandlers();
     }
 
