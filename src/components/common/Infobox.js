@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Infobox.css';
 import $ from 'jquery';
 import observer from '../../models/observer';
+import LoginPage from '../../components/Login/LoginPage';
 
 
 export default class Infobox extends Component {
@@ -24,6 +25,7 @@ export default class Infobox extends Component {
         // Make sure event handlers have the correct context
         this.ajaxStart = this.ajaxStart.bind(this);
         this.hide = this.hide.bind(this);
+        this.hideError = this.hideError.bind(this);
         this.handleAjaxError = this.handleAjaxError.bind(this);
     }
 
@@ -31,11 +33,9 @@ export default class Infobox extends Component {
         // Attach global AJAX "loading" event handlers
         $(document).on({
             ajaxStart: this.ajaxStart,
-            ajaxStop: this.hide
+            ajaxStop: this.hide,
+            ajaxError: this.handleAjaxError
         });
-
-        // Attach a global AJAX error handler
-        $(document).ajaxError(this.handleAjaxError);
     }
 
     ajaxStart() {
@@ -43,14 +43,24 @@ export default class Infobox extends Component {
     }
 
     hide() {
+        if(this.state.style=='error'){
+            this.setState({visible:true})
+        }else{
+            this.setState({ visible: false });
+        }
+    }
+    hideError(){
         this.setState({ visible: false });
     }
 
     handleAjaxError(event, response) {
+        console.log(response);
         let errorMsg = JSON.stringify(response);
         if (response.readyState === 0)
             errorMsg = "Cannot connect due to network error.";
-        if (response.responseJSON && response.responseJSON.description)
+        if (response.readyState === 4)
+            errorMsg = "Username / password was incorrect. Please, try again.";
+        else if (response.responseJSON && response.responseJSON.description)
             errorMsg = response.responseJSON.description;
         this.showError(errorMsg);
     }
@@ -70,7 +80,9 @@ export default class Infobox extends Component {
     }
 
     render() {
-        if (!this.state.visible) return null;
+        if (!this.state.visible) {
+            return null;
+        }
 
         let className = 'infobox';
         switch (this.state.style) {
@@ -89,7 +101,7 @@ export default class Infobox extends Component {
         }
 
         return (
-            <div className={className} onClick={this.hide}>
+            <div className={className} onClick={this.hideError}>
                 <span>
                     {this.state.message}
                 </span>
