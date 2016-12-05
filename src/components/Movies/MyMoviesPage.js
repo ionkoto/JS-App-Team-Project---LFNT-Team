@@ -3,7 +3,8 @@ import Movie from './Movie';
 import {loadMovies} from '../../models/movie';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
-import Reactable from 'reactable';
+//import Reactable from 'reactable';
+import Reactable from '../common/reactable';
 import TableTemplate from '../common/Table';
 
 let Table = Reactable.Table;
@@ -47,7 +48,7 @@ export default class MyMoviesPage extends Component {
                 summary:e.summary,
                 director:e.director,
                 genre:e.genre,
-                rating:e.rating,
+                rating:Number(e.rating),
                 date:e.date,
                 actions:<Link to={"/movies/" + e._id} className="btn btn-group-sm">Details</Link>};
             moviesForTable.push(movieObj);
