@@ -48,7 +48,7 @@ export default class MyMoviesPage extends Component {
                 summary:e.summary,
                 director:e.director,
                 genre:e.genre,
-                rating:e.rating,
+                rating:Number(e.rating),
                 date:e.date,
                 actions:<Link to={"/movies/" + e._id} className="btn btn-group-sm">Details</Link>};
             moviesForTable.push(movieObj);
