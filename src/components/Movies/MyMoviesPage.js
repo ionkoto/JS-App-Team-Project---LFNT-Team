@@ -38,44 +38,32 @@ export default class MyMoviesPage extends Component {
         loadMovies(this.onLoadSuccess);
     }
 
-    render() {
-        console.log(this.state.hasMovies);
-        let message = <p>You haven't created any movies yet. Click <Link to="/create">here</Link> to create your first movie.</p>;
+    addActions(){
+        let moviesForTable = [];
+        this.state.mymovies.map((e, i) => {
+            let movieObj = {
+                id:e._id,
+                title:e.title,
+                summary:e.summary,
+                director:e.director,
+                genre:e.genre,
+                rating:e.rating,
+                date:e.date,
+                actions:<Link to={"/movies/" + e._id} className="btn btn-group-sm">Details</Link>};
+            moviesForTable.push(movieObj);
+        });
+        return moviesForTable;
+    }
 
-        if(!this.state.hasMovies){
-            return <div>{message}</div>
-        } else
+    render() {
+        let message = <p>You haven't created any movies yet. Click <Link to="/create">here</Link> to create your first movie.</p>;
+        let data = this.addActions();
+
+        if(this.state.hasMovies){
             return (
                 <div>
                     <h1>My Movies Page</h1>
                     <Link to="/create" className="btn btn-default">Create movie</Link>
-                    {/*<div>*/}
-                    {/*<table className="table-striped">*/}
-                        {/*<thead>*/}
-                        {/*<tr>*/}
-                            {/*<td>Title</td>*/}
-                            {/*<td>Summary</td>*/}
-                            {/*<td>Director</td>*/}
-                            {/*<td>Genre</td>*/}
-                            {/*<td>Rating (1/10)</td>*/}
-                            {/*<td>Release Date</td>*/}
-                            {/*<td>Actions</td>*/}
-                        {/*</tr>*/}
-                        {/*</thead>*/}
-                        {/*<tbody>*/}
-                        {/*{this.state.mymovies.map((e, i) => {*/}
-                            {/*return <Movie key={i}*/}
-                                          {/*id={e._id}*/}
-                                          {/*title={e.title}*/}
-                                          {/*summary={e.summary}*/}
-                                          {/*director={e.director}*/}
-                                          {/*genre={e.genre}*/}
-                                          {/*rating={e.rating}*/}
-                                          {/*date={e.date}/>*/}
-                        {/*})}*/}
-                        {/*</tbody>*/}
-                    {/*</table>*/}
-                {/*</div>*/}
                     <TableTemplate
                         className="table"
                         filterable={['title', 'summary', 'director', 'genre', 'rating','date']}
@@ -83,9 +71,11 @@ export default class MyMoviesPage extends Component {
                         itemsPerPage={5}
                         currentPage={0}
                         sortable={true}
-                        data={this.state.mymovies}
+                        data={data}
                     />
                 </div>
             );
+        } else
+            return <div>{message}</div>
     }
 }
