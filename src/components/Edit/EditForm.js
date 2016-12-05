@@ -81,6 +81,17 @@ export default class EditForm extends Component {
                         />
                     </div>
                 </div>
+                <div className="form-group">
+                    <label>Poster:</label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="image"
+                        value={this.props.image}
+                        disabled={this.props.submitDisabled}
+                        onChange={this.props.onChangeHandler}
+                    />
+                </div>
                 <input className="btn btn-default" type="submit" value="Submit changes" disabled={this.props.submitDisabled}/>
             </form>
         );
