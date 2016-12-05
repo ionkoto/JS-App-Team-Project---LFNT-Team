@@ -22,7 +22,8 @@ function login(username, password, callback) {
     };
 
     requester.post('user', 'login', userData, 'basic')
-        .then(loginSuccess);
+        .then(loginSuccess)
+        .catch(callback(false));
 
     function loginSuccess(userInfo) {
         saveSession(userInfo);
