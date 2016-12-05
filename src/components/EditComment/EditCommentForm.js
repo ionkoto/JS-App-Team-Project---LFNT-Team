@@ -1,0 +1,20 @@
+import React, {Component} from 'react';
+
+
+export default class EditCommentForm extends Component {
+
+    render() {
+        return(
+            <div>
+                <textarea className="form-control"
+                          name="commentText"
+                          value={this.props.commentText}
+                          onChange={this.props.onChangeHandler}
+                />
+                <button className="btn btn-default"  onClick= {this.props.onEditSubmitHandler}>Edit Comment</button>
+                <button className="btn btn-default"  onClick= {this.props.onDeleteSubmitHandler}>Delete Comment</button>
+            </div>
+        )
+    }
+}
+

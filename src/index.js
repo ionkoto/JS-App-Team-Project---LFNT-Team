@@ -15,6 +15,7 @@ import Details from './components/Movies/Details';
 import Edit from './components/Edit/EditPage';
 import Create from './components/Create/CreatePage';
 import Delete from './components/Delete/DeletePage';
+import EditComment from './components/EditComment/EditComment';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -35,6 +36,7 @@ ReactDOM.render(
             <Route path="edit/:movieId" component={Edit}/>
             <Route path="create" component={Create}/>
             <Route path="delete/:movieId" component={Delete}/>
+            <Route path="editComment/:commentId" component={EditComment}/>
         </Route>
     </Router>,
     document.getElementById('root')

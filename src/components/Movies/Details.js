@@ -5,6 +5,7 @@ import MovieControls from './MovieControls';
 import Comment from '../Comments/Comment';
 import CreateCommentForm from '../Comments/CreateCommentForm';
 import './Details.css';
+import $ from 'jquery'
 
 
 export default class Details extends Component {
@@ -76,7 +77,8 @@ export default class Details extends Component {
     onCommentSuccess (response) {
         this.setState({
             comments: response
-        })
+        });
+
     }
 
     createComment (event) {
@@ -109,6 +111,7 @@ export default class Details extends Component {
 
     }
 
+
     render() {
 
         return (
@@ -133,10 +136,14 @@ export default class Details extends Component {
                 />
                 <span className="spanner">Comments</span>
                 {(this.state.comments.length !== 0)?this.state.comments.map((c, i) => {
-                    return <Comment key ={i}
+                    return <Comment key={i}
+                                    index={i}
                                     id={c._id}
+                                    creator={c._acl.creator}
                                     commentText={c.commentText}
-                                    commentAuthor={c.commentAuthor}/>
+                                    commentAuthor={c.commentAuthor}
+                                    commentClick={this.commentClick}
+                    />
                 }) : <p>No comments yet</p>
                 }
                 <span className="spanner">Add Comment</span>
