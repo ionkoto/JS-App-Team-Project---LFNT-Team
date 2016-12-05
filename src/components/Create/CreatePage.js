@@ -5,7 +5,7 @@ import {create} from '../../models/movie';
 export default class CreatePage extends Component {
     constructor(props) {
         super(props);
-        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', submitDisabled: false};
+        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', image: '', video: '', submitDisabled: false};
         this.bindEventHandlers();
     }
 
@@ -26,7 +26,15 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        create(this.state.title, this.state.summary, this.state.director, this.state.genre, this.state.rating, this.state.date, this.onSubmitResponse);
+        create(this.state.title,
+            this.state.summary,
+            this.state.director,
+            this.state.genre,
+            this.state.rating,
+            this.state.date,
+            this.state.image,
+            this.state.video,
+            this.onSubmitResponse);
     }
 
     onSubmitResponse(response) {
@@ -50,6 +58,8 @@ export default class CreatePage extends Component {
                     genre={this.state.genre}
                     rating={this.state.rating}
                     date={this.state.date}
+                    image={this.state.image}
+                    video={this.state.video}
                     submitDisabled={this.state.submitDisabled}
                     onChangeHandler={this.onChangeHandler}
                     onSubmitHandler={this.onSubmitHandler}
