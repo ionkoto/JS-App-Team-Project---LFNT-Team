@@ -5,7 +5,7 @@ import {loadMovieDetails, edit} from '../../models/movie';
 export default class EditPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', image: '', video: '', submitDisabled: true};
+        this.state = {title: '', summary: '', director: '', genre: '', rating: 0, date: '', image: '', video: '',timestamp:'', submitDisabled: true};
         this.bindEventHandlers();
     }
 
@@ -32,6 +32,7 @@ export default class EditPage extends Component {
             date: response.date,
             image: response.image,
             video: response.video,
+            timestamp: response.timestamp,
             submitDisabled: false
         });
     }
@@ -55,6 +56,7 @@ export default class EditPage extends Component {
             this.state.date,
             this.state.image,
             this.state.video,
+            this.state.timestamp,
             this.onSubmitResponse);
     }
 
