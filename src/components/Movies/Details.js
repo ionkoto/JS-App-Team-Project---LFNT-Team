@@ -13,6 +13,7 @@ export default class Details extends Component {
             genre: '',
             rating: 0,
             date: '',
+            image: '',
             canEdit: false,
             ownMovie: sessionStorage.getItem('movieId') === this.props.params.movieId
         };
@@ -44,6 +45,7 @@ export default class Details extends Component {
             genre: response.genre,
             rating: response.rating,
             date: response.date,
+            image: response.image
         };
         if (response._acl.creator === sessionStorage.getItem('userId')) {
             newState.canEdit = true;
@@ -62,6 +64,7 @@ export default class Details extends Component {
         return (
             <div className="details-box">
                 <span className="titlebar">{this.state.title}</span>
+                <img src={this.state.image}/>
                 <span className="spanner">Summary</span>
                 <p>{this.state.summary || 'No description'}</p>
                 <span className="spanner">Director</span>
@@ -72,7 +75,6 @@ export default class Details extends Component {
                 <p>{this.state.rating || 'No rating'}</p>
                 <span className="spanner">Release date</span>
                 <p>{this.state.date || 'Unknown release date'}</p>
-
                 <MovieControls
                     movieId={this.props.params.movieId}
                     canEdit={this.state.canEdit}
