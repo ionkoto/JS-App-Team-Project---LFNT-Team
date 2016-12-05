@@ -18,7 +18,7 @@ function loadUsersDetails(movieId, onUsersSuccess) {
         .then(onUsersSuccess);
 }
 
-function edit(movieId, title, summary, director, genre, rating, date, image, callback) {
+function edit(movieId, title, summary, director, genre, rating, date, image, video, callback) {
     let movieData = {
         title: title,
         summary: summary,
@@ -26,13 +26,14 @@ function edit(movieId, title, summary, director, genre, rating, date, image, cal
         genre:genre,
         rating: rating,
         date:date,
-        image:image
+        image:image,
+        video:video
     };
     update('appdata', 'movies/' + movieId, movieData, 'kinvey')
         .then(callback(true));
 }
 
-function create(title, summary, director, genre, rating, date, image, callback) {
+function create(title, summary, director, genre, rating, date, image, video, callback) {
     let movieData = {
         title: title,
         summary: summary,
@@ -40,7 +41,8 @@ function create(title, summary, director, genre, rating, date, image, callback) 
         genre:genre,
         rating: rating,
         date:date,
-        image:image
+        image:image,
+        video:video
     };
     post('appdata', 'movies', movieData, 'kinvey')
         .then(callback(true));
