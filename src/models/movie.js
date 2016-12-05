@@ -18,7 +18,7 @@ function loadUsersDetails(movieId, onUsersSuccess) {
         .then(onUsersSuccess);
 }
 
-function edit(movieId, title, summary, director, genre, rating, date, image, video, callback) {
+function edit(movieId, title, summary, director, genre, rating, date, image, video, timestamp, callback) {
     let movieData = {
         title: title,
         summary: summary,
@@ -27,7 +27,8 @@ function edit(movieId, title, summary, director, genre, rating, date, image, vid
         rating: rating,
         date:date,
         image:image,
-        video:video
+        video:video,
+        timestamp:timestamp
     };
     update('appdata', 'movies/' + movieId, movieData, 'kinvey')
         .then(callback(true));

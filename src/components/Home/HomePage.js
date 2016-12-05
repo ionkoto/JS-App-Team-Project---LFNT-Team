@@ -29,7 +29,7 @@ export default class HomePage extends Component {
             return b.timestamp - a.timestamp;
         });
         //Take the 5 latest added movies
-        movies = movies.slice(0,6);
+        movies = movies.slice(0,5);
         this.setState({movies: movies})
     }
 
@@ -57,15 +57,13 @@ export default class HomePage extends Component {
                                 <article className="post col-md-6" key={i}>
                                     <h3>{e.title}</h3>
                                     <div className="about">
-                                        <b>Director: </b> <i>{e.director}</i><b>Genre: </b><i>{e.genre}</i><b>Rating (0/10): </b> <i>{e.rating}</i>                                                    <b>Release Date: </b><i>{e.date}</i>
+                                        <b>Director: </b> <i>{e.director}</i><br/><b>Genre: </b><i>{e.genre}</i><br/><b>Rating (0/10): </b> <i>{e.rating}</i><br/><b>Release Date: </b><i>{e.date}</i>
                                     </div>
                                     <div className="body"><b>Summary: </b> <i>{e.summary}</i></div>
 
                                     <div className="post">
-                                        <b>Poster</b>
-                                        <div>
-                                            {e.image}
-                                        </div>
+                                        <b>Poster</b><br/>
+                                        <img src={e.image || <div>Poster missing</div>}/>
                                     </div>
 
 
