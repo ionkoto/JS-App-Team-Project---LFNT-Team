@@ -30,7 +30,7 @@ export default class CreatePage extends Component {
             this.state.summary,
             this.state.director,
             this.state.genre,
-            this.state.rating,
+            Number(this.state.rating),
             this.state.date,
             this.state.image,
             this.state.video,
