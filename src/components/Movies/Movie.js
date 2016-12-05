@@ -3,6 +3,7 @@ import {Link} from 'react-router';
 import './Movie.css';
 
 export default class Movie extends Component {
+
     render() {
         return(
             <tr>
