@@ -18,7 +18,8 @@ export default class HomePage extends Component {
 
     componentDidMount() {
         // Request list of movies from the server
-        loadMovies(this.onLoadSuccess);
+        if (sessionStorage.getItem('username'))
+            loadMovies(this.onLoadSuccess);
     }
 
     onLoadSuccess(response) {
@@ -35,18 +36,20 @@ export default class HomePage extends Component {
 
 
     render() {
+        let message = '';
         if (!sessionStorage.getItem('username')) {
-            let message = <p>You are currently not logged in. Please, log in or register to view movies.</p>;
+            message = <p>You are currently not logged in. Please, <Link to={"/login"}>log in</Link> or <Link to={"/register"}>register</Link> to view movies.</p>;
             return(
                 <div>{message}</div>
             )
         }
 
         else if (sessionStorage.getItem('username')) {
-            let message = <Link to={"/mymovies/"}>Go to my movies</Link>
+            message = <Link to={"/mymovies/"}>Go to my movies</Link>
         }
         return (
             <div>
+                <div>{message}</div>
                 <h1>Last added: </h1>
                     {this.state.movies.map((e, i) => {
                         return <Movie key={i}
