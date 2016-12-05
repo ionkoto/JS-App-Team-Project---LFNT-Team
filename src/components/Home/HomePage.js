@@ -52,16 +52,29 @@ export default class HomePage extends Component {
                 <div>{message}</div>
                 <h1>Last added: </h1>
                     {this.state.movies.map((e, i) => {
-                        return <Movie key={i}
-                                      id={e._id}
-                                      title={e.title}
-                                      summary={e.summary}
-                                      director={e.director}
-                                      genre={e.genre}
-                                      rating={e.rating}
-                                      date={e.date}/>
+                        return (
+                        <div>
+                                <article className="post col-md-6" key={i}>
+                                    <h3>{e.title}</h3>
+                                    <div className="about">
+                                        <b>Director: </b> <i>{e.director}</i><b>Genre: </b><i>{e.genre}</i><b>Rating (0/10): </b> <i>{e.rating}</i>                                                    <b>Release Date: </b><i>{e.date}</i>
+                                    </div>
+                                    <div className="body"><b>Summary: </b> <i>{e.summary}</i></div>
+
+                                    <div className="post">
+                                        <b>Poster</b>
+                                        <div>
+                                            {e.image}
+                                        </div>
+                                    </div>
+
+
+                                </article>
+                        </div>
+                        );
                     })}
+
             </div>
         );
     }
-}
+};
