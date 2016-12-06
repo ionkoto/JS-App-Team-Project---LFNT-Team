@@ -58,9 +58,10 @@ export default class Infobox extends Component {
         let errorMsg = JSON.stringify(response);
         if (response.readyState === 0)
             errorMsg = "Cannot connect due to network error.";
-        if (response.readyState === 4)
-            errorMsg = "Username / password was incorrect. Please, try again.";
-        else if (response.responseJSON && response.responseJSON.description)
+        // if (response.readyState === 4)
+        //     errorMsg = "Username / password was incorrect. Please, try again.";
+        if (response.responseJSON && response.description)
+            console.log(response);
             errorMsg = response.responseJSON.description;
         this.showError(errorMsg);
     }

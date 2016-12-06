@@ -39,7 +39,8 @@ function register(username, password, callback) {
     };
 
     requester.post('user', '', userData, 'basic')
-        .then(registerSuccess);
+        .then(registerSuccess)
+        .catch(callback(false));
 
     function registerSuccess(userInfo) {
         observer.showSuccess('Successful registration.');

@@ -38,7 +38,7 @@ export default class HomePage extends Component {
     render() {
         let message = '';
         if (!sessionStorage.getItem('username')) {
-            message = <p>You are currently not logged in. Please, <Link to={"/login"}>log in</Link> or <Link to={"/register"}>register</Link> to view movies.</p>;
+            message = <h1>You are currently not logged in. Please, <Link to={"/login"}>log in</Link> or <Link to={"/register"}>register</Link> to view movies.</h1>;
             return(
                 <div>{message}</div>
             )
