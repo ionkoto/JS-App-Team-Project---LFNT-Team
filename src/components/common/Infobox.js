@@ -87,24 +87,27 @@ export default class Infobox extends Component {
         let className = 'infobox';
         switch (this.state.style) {
             case 'info':
-                className += ' bg-primary';
+                className = 'alert alert-dismissible alert-info';
                 break;
             case 'error':
-                className += ' bg-danger';
+                className = 'alert alert-dismissible alert-danger';
                 break;
             case 'success':
-                className += ' bg-success';
+                className = 'alert alert-dismissible alert-success';
                 break;
             default:
-                className += ' bg-primary';
+                className = 'alert alert-dismissible alert-info';
                 break;
         }
 
         return (
+            // {/*<div className={className} onClick={this.hideError}>*/}
+            //     {/*<span>*/}
+            //         {/*{this.state.message}*/}
+            //     {/*</span>*/}
+            // {/*</div>*/}
             <div className={className} onClick={this.hideError}>
-                <span>
-                    {this.state.message}
-                </span>
+                <button type="button" className="close" >&times;</button>{this.state.message}
             </div>
         )
     }
