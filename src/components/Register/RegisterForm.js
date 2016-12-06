@@ -11,7 +11,6 @@ export default class RegisterForm extends Component {
                         type="text"
                         name="username"
                         value={this.props.username}
-                        disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
@@ -22,7 +21,6 @@ export default class RegisterForm extends Component {
                         type="password"
                         name="password"
                         value={this.props.password}
-                        disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
@@ -33,9 +31,13 @@ export default class RegisterForm extends Component {
                         type="password"
                         name="repeat"
                         value={this.props.repeat}
-                        disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
                     />
+                </div>
+                <div className="form-group" hidden={this.props.hidden}>
+                    <div className="alert alert-dismissible alert-danger">
+                        <strong>Your username and password need to be at least 3 symbols long</strong>
+                    </div>
                 </div>
                 <input className="btn btn-default" type="submit" value="Register" disabled={this.props.submitDisabled}/>
             </form>

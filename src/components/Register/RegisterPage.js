@@ -5,7 +5,7 @@ import {register} from '../../models/user';
 export default class RegisterPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { username: '', password: '', repeat: '', submitDisabled: false };
+        this.state = { username: '', password: '', repeat: '', submitDisabled: true, hidden:false };
         this.bindEventHandlers();
     }
 
@@ -30,6 +30,14 @@ export default class RegisterPage extends Component {
             default:
                 break;
         }
+        setTimeout((function () {if(this.state.username.length>=3 && this.state.password.length >=3){
+            this.setState({hidden: true});
+            this.setState({submitDisabled: false});
+        }else{
+            this.setState({hidden: false});
+            this.setState({submitDisabled: true});
+        }}).bind(this), 250)
+
     }
 
     onSubmitHandler(event) {
@@ -60,6 +68,7 @@ export default class RegisterPage extends Component {
                     username={this.state.username}
                     password={this.state.password}
                     repeat={this.state.repeat}
+                    hidden={this.state.hidden}
                     submitDisabled={this.state.submitDisabled}
                     onChangeHandler={this.onChangeHandler}
                     onSubmitHandler={this.onSubmitHandler}
