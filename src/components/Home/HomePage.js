@@ -54,7 +54,7 @@ export default class HomePage extends Component {
         return (
             <div>
                 <div>{message}</div>
-                <h1>Last added: </h1>
+                <h3>Latest:</h3>
                     {this.state.movies.map((e, i) => {
                         return (
                         <div key={i} className="post col-md-6">
