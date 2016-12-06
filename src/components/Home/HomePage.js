@@ -29,7 +29,7 @@ export default class HomePage extends Component {
             return b.timestamp - a.timestamp;
         });
         //Take the 5 latest added movies
-        movies = movies.slice(0,5);
+        movies = movies.slice(0,6);
         this.setState({movies: movies})
     }
 
