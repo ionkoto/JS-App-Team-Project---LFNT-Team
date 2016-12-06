@@ -45,7 +45,7 @@ export default class MoviesPage extends Component {
             genre:e.genre,
             rating:Number(e.rating),
             date:e.date,
-            actions:<Link to={"/movies/" + e._id} className="btn btn-group-sm">Details</Link>};
+            actions:<Link to={"/movies/" + e._id} className="btn btn-default">Details</Link>};
             moviesForTable.push(movieObj);
         });
         return moviesForTable;
@@ -58,7 +58,7 @@ export default class MoviesPage extends Component {
 
             <div>
                 <h1>Movie Page</h1>
-                <Link to="/create" className="btn btn-default" >Create movie</Link>
+                <Link to="/create" className="btn btn-info" >Create movie</Link>
                 {/*<div>*/}
                     {/*<table className="table-striped">*/}
                         {/*<thead>*/}
