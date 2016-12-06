@@ -45,7 +45,7 @@ export default class HomePage extends Component {
         }
 
         else if (sessionStorage.getItem('username')) {
-            message = <Link to={"/mymovies/"}>Go to my movies</Link>
+            message = <Link to={"/mymovies/"} className="btn btn-info">Go to my movies</Link>
         }
         return (
             <div>
@@ -53,7 +53,7 @@ export default class HomePage extends Component {
                 <h1>Last added: </h1>
                     {this.state.movies.map((e, i) => {
                         return (
-                        <div>
+                        <div key={i}>
                                 <article className="post col-md-6" key={i}>
                                     <h3>{e.title}</h3>
                                     <div className="about">
@@ -63,7 +63,7 @@ export default class HomePage extends Component {
 
                                     <div className="post">
                                         <b>Poster</b><br/>
-                                        <img src={e.image || <div>Poster missing</div>}/>
+                                        {(e.image !== "" )?<img src={e.image}/>:<div>Poster missing</div>}
                                     </div>
 
 

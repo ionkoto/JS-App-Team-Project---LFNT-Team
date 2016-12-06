@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 export default class Navbar extends Component {
     render() {
         return (
-            <div>
+                <ul className="nav navbar-nav">
                 {this.props.children}
-            </div>
+                </ul>
         );
     }
 }

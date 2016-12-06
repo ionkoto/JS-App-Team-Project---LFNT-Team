@@ -64,7 +64,7 @@ export default class MyMoviesPage extends Component {
             return (
                 <div>
                     <h1>My Movies Page</h1>
-                    <Link to="/create" className="btn btn-default">Create movie</Link>
+                    <Link to="/create" className="btn btn-info">Create movie</Link>
                     <TableTemplate
                         className="table"
                         filterable={['title', 'summary', 'director', 'genre', 'rating','date']}

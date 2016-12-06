@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Header from './components/common/Header';
+import Footer from './components/common/Footer';
 import Navbar from './components/common/Navbar';
 import Infobox from  './components/common/Infobox';
 import {Link} from 'react-router';
@@ -29,31 +30,38 @@ class App extends Component {
         let navbar = {};
         if (!this.state.loggedIn) {
             navbar = (
-                    <Navbar>
-                        <Link to="/" className="btn btn-default" activeClassName="btn btn-default active" onlyActiveOnIndex={true}>Home</Link>
-                        <Link to="/about" className="btn btn-default" activeClassName="btn btn-default active">About</Link>
-                        <Link to="/login" className="btn btn-default" activeClassName="btn btn-default active">Login</Link>
-                        <Link to="/register" className="btn btn-default" activeClassName="btn btn-default active">Register</Link>
+                    <Navbar className="nav navbar-nav">
+                        <li><Link to="/"  onlyActiveOnIndex={true}>Home</Link></li>
+                        <li><Link to="/about">About</Link></li>
+                        <li><Link to="/login" >Login</Link></li>
+                        <li><Link to="/register">Register</Link></li>
                     </Navbar>
                 );
         } else {
             navbar = (
-                <Navbar>
-                    <Link to="/" className="btn btn-default" activeClassName="btn btn-default active" onlyActiveOnIndex={true}>Home</Link>
-                    <Link to="/movies" className="btn btn-default" activeClassName="btn btn-default active">Movies</Link>
-                    <Link to="/about" className="btn btn-default" activeClassName="btn btn-default active">About</Link>
-                    <Link to="/logout" className="btn btn-default" activeClassName="btn btn-default active">Logout</Link>
+                <Navbar className="nav navbar-nav">
+                    <li><Link to="/"  onlyActiveOnIndex={true}>Home</Link></li>
+                    <li><Link to="/movies" >Movies</Link></li>
+                    <li><Link to="/about" >About</Link></li>
+                    <li><Link to="/logout" >Logout</Link></li>
                 </Navbar>
             );
         }
 
         return (
-            <div className="container">
+            <div>
                 <Header loggedIn={this.state.loggedIn} user={this.state.username}>
                     {navbar}
                 </Header>
-                {this.props.children}
-                <Infobox/>
+                <div className="root" id="body">
+                    <div className="container">
+                        {this.props.children}
+                        <Infobox/>
+                    </div>
+                </div>
+                <div className="navbar navbar-inverse navbar-fixed-bottom" id="footer">
+                    <Footer/>
+                </div>
             </div>
         )
     }

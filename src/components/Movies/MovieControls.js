@@ -6,7 +6,7 @@ export default class MovieControls extends Component {
         let edit = null;
 
 
-        if (this.props.canEdit) edit = <div><Link to={"/edit/" + this.props.movieId} className="btn btn-default">Edit info</Link> <Link to={"/delete/" + this.props.movieId} className="btn btn-default">Delete movie</Link></div>;
+        if (this.props.canEdit) edit = <div><Link to={"/edit/" + this.props.movieId} className="btn btn-primary">Edit info</Link> <Link to={"/delete/" + this.props.movieId} className="btn btn-warning">Delete movie</Link></div>;
 
         return (
             edit

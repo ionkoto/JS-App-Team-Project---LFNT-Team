@@ -11,7 +11,7 @@ export default class CreateCommentForm extends Component {
                           value={this.props.newCommentText}
                           onChange={this.props.onChangeHandler}
                 />
-                <button className="btn btn-default"  onClick= {this.props.createComment} disabled={this.props.addCommentDisabled}>Add Comment</button>
+                <button className="btn btn-success"  onClick= {this.props.createComment} disabled={this.props.addCommentDisabled}>Add Comment</button>
             </div>
         )
     }
