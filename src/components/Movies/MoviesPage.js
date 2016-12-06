@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Movie from './Movie';
+//import Movie from './Movie';
 import {loadMovies} from '../../models/movie';
 import {Link} from 'react-router';
 //import observer from '../../models/observer';
@@ -9,8 +9,8 @@ import Reactable from '../common/reactable';
 let Table = Reactable.Table;
 let Thead = Reactable.Thead;
 let Th = Reactable.Th;
-let Tr = Reactable.Tr;
-let Td = Reactable.Td;
+//let Tr = Reactable.Tr;
+//let Td = Reactable.Td;
 
 export default class MoviesPage extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ export default class MoviesPage extends Component {
 
     addActions(){
         let moviesForTable = [];
-        this.state.movies.map((e, i) => {
+        this.state.movies.map((e) => {
             let movieObj = {
             id:e._id,
             title:e.title,
@@ -57,7 +57,7 @@ export default class MoviesPage extends Component {
         return (
 
             <div>
-                <h1>Movie Page</h1>
+                <h1>Movies Page</h1>
                 <Link to="/create" className="btn btn-info" >Create movie</Link>
                 <Table className="table table-striped table-hover "
                        filterable={['title', 'summary', 'director', 'genre', 'rating','date']}

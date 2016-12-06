@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Infobox.css';
 import $ from 'jquery';
 import observer from '../../models/observer';
-import LoginPage from '../../components/Login/LoginPage';
+//import LoginPage from '../../components/Login/LoginPage';
 
 
 export default class Infobox extends Component {
@@ -43,7 +43,7 @@ export default class Infobox extends Component {
     }
 
     hide() {
-        if(this.state.style=='error'){
+        if(this.state.style==='error'){
             this.setState({visible:true})
         }else{
             this.setState({ visible: false });

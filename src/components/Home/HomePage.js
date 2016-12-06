@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {loadMovies} from '../../models/movie';
-import Movie from '../../components/Movies/Movie';
+//import Movie from '../../components/Movies/Movie';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -63,7 +63,7 @@ export default class HomePage extends Component {
 
                                     <div className="post">
                                         <b>Poster</b><br/>
-                                        {(e.image !== "" )?<img src={e.image}/>:<div>Poster missing</div>}
+                                        {(e.image !== "" )?<img src={e.image} role="presentation"/>:<div>Poster missing</div>}
                                     </div>
 
 

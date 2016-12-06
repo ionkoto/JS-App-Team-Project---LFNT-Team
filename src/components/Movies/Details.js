@@ -5,7 +5,7 @@ import MovieControls from './MovieControls';
 import Comment from '../Comments/Comment';
 import CreateCommentForm from '../Comments/CreateCommentForm';
 import './Details.css';
-import $ from 'jquery'
+
 
 
 export default class Details extends Component {
@@ -117,7 +117,7 @@ export default class Details extends Component {
         return (
             <div className="details-box">
                 <span className="titlebar">{this.state.title}</span>
-                <img src={this.state.image}/>
+                <img src={this.state.image} role="presentation"/>
                 <span className="spanner">Summary</span>
                 <p>{this.state.summary || 'No description'}</p>
                 <span className="spanner">Director</span>
@@ -149,8 +149,8 @@ export default class Details extends Component {
                 <span className="spanner">Add Comment</span>
                 <CreateCommentForm
                     onChangeHandler={this.onChangeHandler}
-                    addCommentDisabled = {this.state.addCommentDisabled}
-                    createComment = {this.createComment}
+                    addCommentDisabled={this.state.addCommentDisabled}
+                    createComment={this.createComment}
                 />
             </div>
         )
