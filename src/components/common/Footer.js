@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Greeting from '../common/Greeting';
+
 
 export default class Footer extends Component {
     render() {

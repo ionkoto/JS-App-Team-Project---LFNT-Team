@@ -26,8 +26,8 @@ export default class MyMoviesPage extends Component {
 
     onLoadSuccess(response) {
         // Display My movies
-        response.map((e, i) => {
-            if(sessionStorage.getItem('userId')== e._acl.creator){
+        response.map((e) => {
+            if(sessionStorage.getItem('userId')=== e._acl.creator){
                 this.state.mymovies.push(e);
                 this.setState({hasMovies: true})
             }});
@@ -40,7 +40,7 @@ export default class MyMoviesPage extends Component {
 
     addActions(){
         let moviesForTable = [];
-        this.state.mymovies.map((e, i) => {
+        this.state.mymovies.map((e) => {
             let movieObj = {
                 id:e._id,
                 title:e.title,

@@ -11,8 +11,8 @@ export default class EditCommentForm extends Component {
                           value={this.props.commentText}
                           onChange={this.props.onChangeHandler}
                 />
-                <button className="btn btn-default"  onClick= {this.props.onEditSubmitHandler}>Edit Comment</button>
-                <button className="btn btn-default"  onClick= {this.props.onDeleteSubmitHandler}>Delete Comment</button>
+                <button className="btn btn-success"  onClick={this.props.onEditSubmitHandler}>Edit Comment</button>
+                <button className="btn btn-warning"  onClick={this.props.onDeleteSubmitHandler}>Delete Comment</button>
             </div>
         )
     }
