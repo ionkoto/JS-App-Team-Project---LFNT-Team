@@ -56,7 +56,7 @@ export default class MyMoviesPage extends Component {
     }
 
     render() {
-        let message = <p>You haven't created any movies yet. Click <Link to="/create">here</Link> to create your first movie.</p>;
+        let message = <h3>You haven't created any movies yet. Click <Link to="/create">here</Link> to create your first movie.</h3>;
         let data = this.addActions();
 
         if(this.state.hasMovies){
