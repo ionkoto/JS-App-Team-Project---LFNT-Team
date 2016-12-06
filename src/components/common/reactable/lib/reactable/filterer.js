@@ -40,8 +40,8 @@ var FiltererInput = (function (_React$Component) {
         key: 'render',
         value: function render() {
             return _react2['default'].createElement('input', { type: 'text',
-                className: this.props.className,
-                placeholder: this.props.placeholder,
+                className: 'form-control',
+                placeholder: 'Filter movies',
                 value: this.props.value,
                 onKeyUp: this.onChange.bind(this),
                 onChange: this.onChange.bind(this) });
