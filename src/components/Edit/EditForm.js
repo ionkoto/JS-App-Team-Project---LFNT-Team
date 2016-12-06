@@ -90,6 +90,7 @@ export default class EditForm extends Component {
                         value={this.props.image}
                         disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
+                        placeholder="Place image URL here"
                     />
                 </div>
                 <div className="form-group">
@@ -101,6 +102,7 @@ export default class EditForm extends Component {
                         value={this.props.video}
                         disabled={this.props.submitDisabled}
                         onChange={this.props.onChangeHandler}
+                        placeholder="Place video URL here"
                     />
                 </div>
                 <input className="btn btn-success" type="submit" value="Submit changes" disabled={this.props.submitDisabled}/>

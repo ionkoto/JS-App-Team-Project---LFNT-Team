@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import CreateForm from '../Edit/EditForm';
 import {create} from '../../models/movie';
+import observer from '../../models/observer';
 
 export default class CreatePage extends Component {
     constructor(props) {
@@ -26,20 +27,26 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        create(this.state.title,
-            this.state.summary,
-            this.state.director,
-            this.state.genre,
-            Number(this.state.rating),
-            this.state.date,
-            this.state.image,
-            this.state.video,
-            this.onSubmitResponse);
+        if(!this.state.title){
+            observer.showError("You can't create a movie without a title");
+            this.setState({submitDisabled: false});
+        }else{
+            create(this.state.title,
+                this.state.summary,
+                this.state.director,
+                this.state.genre,
+                Number(this.state.rating),
+                this.state.date,
+                this.state.image,
+                this.state.video,
+                this.onSubmitResponse);
+        }
     }
 
     onSubmitResponse(response) {
         if (response === true) {
             // Navigate away from login page
+            observer.showSuccess('You successfully created a Movie!');
             this.context.router.push('/movies');
         } else {
             // Something went wrong, let the user try again
