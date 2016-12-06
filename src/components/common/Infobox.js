@@ -76,10 +76,10 @@ export default class Infobox extends Component {
         setTimeout(this.hide, 3000);
     }
 
+
     showError(errorMsg) {
         this.setState({ message: errorMsg, style: 'error', visible: true });
     }
-
     render() {
         if (!this.state.visible) {
             return null;

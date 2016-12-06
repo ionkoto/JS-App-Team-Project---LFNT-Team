@@ -27,15 +27,20 @@ export default class CreatePage extends Component {
     onSubmitHandler(event) {
         event.preventDefault();
         this.setState({submitDisabled: true});
-        create(this.state.title,
-            this.state.summary,
-            this.state.director,
-            this.state.genre,
-            Number(this.state.rating),
-            this.state.date,
-            this.state.image,
-            this.state.video,
-            this.onSubmitResponse);
+        if(!this.state.title){
+            observer.showError("You can't create a movie without a title");
+            this.setState({submitDisabled: false});
+        }else{
+            create(this.state.title,
+                this.state.summary,
+                this.state.director,
+                this.state.genre,
+                Number(this.state.rating),
+                this.state.date,
+                this.state.image,
+                this.state.video,
+                this.onSubmitResponse);
+        }
     }
 
     onSubmitResponse(response) {
