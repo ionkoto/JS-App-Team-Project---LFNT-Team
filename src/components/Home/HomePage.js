@@ -38,9 +38,13 @@ export default class HomePage extends Component {
     render() {
         let message = '';
         if (!sessionStorage.getItem('username')) {
-            message = <p>You are currently not logged in. Please, <Link to={"/login"}>log in</Link> or <Link to={"/register"}>register</Link> to view movies.</p>;
+            message = <h1>Please, <Link to={"/login"}><strong>log in</strong></Link> or <Link to={"/register"}><strong>register</strong></Link> to view movies.</h1>;
             return(
-                <div>{message}</div>
+                <div className="jumbotron">
+                    <h1>Welcome to LFNT Movie Database</h1>
+                    <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+                </div>
             )
         }
 
