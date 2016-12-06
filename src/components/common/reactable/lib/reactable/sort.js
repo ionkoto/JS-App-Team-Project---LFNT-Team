@@ -1,4 +1,4 @@
-'use strict';
+
 
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -41,8 +41,8 @@ var Sort = {
 
     Currency: function Currency(a, b) {
         // Parse out dollar signs, then do a regular numeric sort
-        a = a.replace(/[^0-9\.\-\,]+/g, '');
-        b = b.replace(/[^0-9\.\-\,]+/g, '');
+        a = a.replace(/[^0-9.\-,]+/g, '');
+        b = b.replace(/[^0-9.\-,]+/g, '');
 
         return exports.Sort.Numeric(a, b);
     },
