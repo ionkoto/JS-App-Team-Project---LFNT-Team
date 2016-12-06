@@ -1,4 +1,5 @@
 'use strict';
+import $ from 'jquery';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
@@ -58,7 +59,7 @@ var Paginator = (function (_React$Component) {
                     { className: 'reactable-previous-page',
                         href: pageHref(this.props.currentPage - 1),
                         onClick: this.handlePrevious.bind(this) },
-                    this.props.previousPageLabel || 'Previous'
+                    this.props.previousPageLabel || 'Previous '
                 );
             }
         }
@@ -71,7 +72,7 @@ var Paginator = (function (_React$Component) {
                     { className: 'reactable-next-page',
                         href: pageHref(this.props.currentPage + 1),
                         onClick: this.handleNext.bind(this) },
-                    this.props.nextPageLabel || 'Next'
+                    this.props.nextPageLabel || ' Next'
                 );
             }
         }
@@ -85,10 +86,10 @@ var Paginator = (function (_React$Component) {
                     key: pageNum,
                     href: pageHref(pageNum),
                     onClick: this.handlePageButton.bind(this, pageNum) },
-                pageNum + 1
+                pageNum + 1+' '
             );
         }
-    }, {
+    },{
         key: 'render',
         value: function render() {
             if (typeof this.props.colSpan === 'undefined') {
