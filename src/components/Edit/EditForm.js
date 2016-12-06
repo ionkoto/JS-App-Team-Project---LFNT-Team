@@ -103,7 +103,7 @@ export default class EditForm extends Component {
                         onChange={this.props.onChangeHandler}
                     />
                 </div>
-                <input className="btn btn-default" type="submit" value="Submit changes" disabled={this.props.submitDisabled}/>
+                <input className="btn btn-success" type="submit" value="Submit changes" disabled={this.props.submitDisabled}/>
             </form>
         );
     }
