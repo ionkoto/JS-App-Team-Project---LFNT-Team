@@ -59,7 +59,7 @@ export default class MoviesPage extends Component {
             <div>
                 <h1>Movie Page</h1>
                 <Link to="/create" className="btn btn-info" >Create movie</Link>
-                <Table className="table"
+                <Table className="table table-striped table-hover "
                        filterable={['title', 'summary', 'director', 'genre', 'rating','date']}
                        noDataText="No matching records found"
                        itemsPerPage={5}
