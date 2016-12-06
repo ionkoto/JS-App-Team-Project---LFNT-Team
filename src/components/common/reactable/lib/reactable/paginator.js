@@ -56,7 +56,7 @@ var Paginator = (function (_React$Component) {
             if (this.props.currentPage > 0) {
                 return _react2['default'].createElement(
                     'a',
-                    { className: 'reactable-previous-page',
+                    { className: 'btn btn-default',
                         href: pageHref(this.props.currentPage - 1),
                         onClick: this.handlePrevious.bind(this) },
                     this.props.previousPageLabel || 'Previous '
@@ -69,7 +69,7 @@ var Paginator = (function (_React$Component) {
             if (this.props.currentPage < this.props.numPages - 1) {
                 return _react2['default'].createElement(
                     'a',
-                    { className: 'reactable-next-page',
+                    { className: 'btn btn-default',
                         href: pageHref(this.props.currentPage + 1),
                         onClick: this.handleNext.bind(this) },
                     this.props.nextPageLabel || ' Next'
@@ -114,9 +114,9 @@ var Paginator = (function (_React$Component) {
             for (var i = 0; i < this.props.numPages; i++) {
                 var showPageButton = false;
                 var pageNum = i;
-                var className = "reactable-page-button";
+                var className = "btn btn-default";
                 if (currentPage === i) {
-                    className += " reactable-current-page";
+                    className = "btn btn-info";
                 }
                 pageButtons.push(this.renderPageButton(className, pageNum));
             }
